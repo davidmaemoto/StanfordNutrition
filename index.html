@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanford Dining Meal Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Stanford Dining Meal Planner</h1>
+    
+    <label for="diningHallSelection">Select Dining Hall:</label>
+    <select id="diningHallSelection" onchange="populateFoodSelection()">
+        <!-- Options will be dynamically added using JavaScript -->
+    </select>
+
+    <label for="foodSelection">Add Food:</label>
+    <select id="foodSelection" onchange="addToPlate()">
+        <option value="" disabled selected>Select a food</option>
+        <!-- Options will be dynamically added using JavaScript -->
+    </select>
+    
+    <label for="desiredCalories">Meal Calorie Goal:</label>
+    <input type="number" id="desiredCalories" min="0" value="750">
+    <p id="calorieGoalIndicator">Calorie Goal: <span id="calorieGoalStatus"></span></p>
+
+
+    <!-- Great! Now I want to pivot to some styling! Let's add a virtual "plate" that acts like a pie chart. Based on the user's desired calories value which represents 100% of the pie-->
+    <div id="plate">
+        <h2>Your Plate</h2>
+        <ul id="plateList"></ul>
+        <p>Total Calories: <span id="totalCalories">0</span> calories</p>
+        <p>Total Carbs: <span id="totalCarbs">0</span>g</p>
+        <p>Total Fat: <span id="totalFat">0</span>g</p>
+        <p>Total Protein: <span id="totalProtein">0</span>g</p>
+        <button onclick="clearPlate()">Clear Plate</button>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

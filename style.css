@@ -1,0 +1,85 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+    background-color: #ecf9fb; /* Light background color */
+}
+
+h1 {
+    background-color: #333;
+    color: rgb(209, 111, 111);
+    text-align: center;
+    padding: 2em 0;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555; /* Slightly darker text color */
+}
+
+select {
+    width: 100%; /* Take full width */
+    padding: 12px;
+    margin-bottom: 15px; /* Add spacing between the dropdown and the next element */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width */
+    appearance: none; /* Remove default arrow in Firefox */
+    background-color: #fff; /* White background color */
+    color: #555; /* Text color */
+}
+
+/* Style for when the dropdown is open */
+select:focus {
+    border-color: #4285f4; /* Highlight border color */
+}
+
+/* Additional spacing after the select element */
+.text-element {
+    margin-top: 15px;
+}
+
+#desiredCalories {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+#calorieGoalIndicator {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#calorieGoalStatus {
+    color: green; /* Default color when the goal is met */
+}
+
+
+#plate {
+    margin-top: 20px;
+    background-color: #faf0f6; /* White background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+#plateList li {
+    margin-bottom: 10px; /* Adjust the margin to your preference */
+    list-style: none; /* Remove list bullet */
+}
+
+button {
+    padding: 12px;
+    background-color: #4285f4; /* Google Blue */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2a4a99; /* Darker Google Blue on hover */
+}
