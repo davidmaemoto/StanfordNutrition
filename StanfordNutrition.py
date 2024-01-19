@@ -42,8 +42,6 @@ def getData(dining_hall, meal_type, recurring):
 
         label_name_elements = soup.find_all('span', {'class': 'clsLabel_Name'})
         stanford_food = [element.text for element in label_name_elements]
-        if meal_type == "Breakfast":
-            stanford_food.pop()
         stanford_food.pop()
         stanford_food.pop()
 
