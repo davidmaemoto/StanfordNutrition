@@ -14,12 +14,19 @@ def daily_food():
     meal_types = ["Breakfast", "Lunch", "Dinner"]
 
     database = {}
+    recurring = {}
+    recurring["Breakfast"] = {}
+    recurring["Lunch"] = {}
+    recurring["Dinner"] = {}
     for dining_hall in dining_halls:
+        database[dining_hall] = {}
         for meal_type in meal_types:
+            if dining_hall == "EVGR Dining" and meal_type == "Breakfast":
+                continue
             if meal_type == "Breakfast":
-                database[dining_hall] = [getData(dining_hall, meal_type)]
+                database[dining_hall][meal_type] = getData(dining_hall, meal_type, recurring)
             else:
-                database[dining_hall].append(getData(dining_hall, meal_type))
+                database[dining_hall][meal_type] = getData(dining_hall, meal_type, recurring)
 
     return database
 

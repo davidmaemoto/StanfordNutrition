@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import urllib.parse
 import time
 
-def getData(dining_hall, meal_type):
+def getData(dining_hall, meal_type, recurring):
     # Use Firefox webdriver
     driver = webdriver.Firefox(executable_path='/Users/davidmaemoto/Documents/geckodriver')
     Nutrition_info = {}
@@ -48,40 +48,44 @@ def getData(dining_hall, meal_type):
         stanford_food.pop()
 
         for food_item in stanford_food:
-            # Open a new browser for each food_item
-            food_driver = webdriver.Firefox(executable_path='/Users/davidmaemoto/Documents/geckodriver')
+            if food_item in recurring[meal_type].keys():
+                Nutrition_info[food_item] = recurring[meal_type][food_item]
+            else:
+                # Open a new browser for each food_item
+                food_driver = webdriver.Firefox(executable_path='/Users/davidmaemoto/Documents/geckodriver')
 
-            try:
-                encoded_food_item = urllib.parse.quote_plus(food_item)
-                myfitnesspal_url = f"https://www.myfitnesspal.com/nutrition-facts-calories/{encoded_food_item}"
+                try:
+                    encoded_food_item = urllib.parse.quote_plus(food_item)
+                    myfitnesspal_url = f"https://www.myfitnesspal.com/nutrition-facts-calories/{encoded_food_item}"
 
-                # Open the MyFitnessPal URL
-                food_driver.get(myfitnesspal_url)
+                    # Open the MyFitnessPal URL
+                    food_driver.get(myfitnesspal_url)
 
-                # Wait for the page to load (adjust as needed)
-                # WebDriverWait(food_driver, 10).until(EC.presence_of_element_located((By.ID, "__next")))
+                    # Wait for the page to load (adjust as needed)
+                    # WebDriverWait(food_driver, 10).until(EC.presence_of_element_located((By.ID, "__next")))
 
-                # Extract information from the MyFitnessPal page
-                myfitnesspal_html = food_driver.page_source
-                myfitnesspal_soup = BeautifulSoup(myfitnesspal_html, 'html.parser')
+                    # Extract information from the MyFitnessPal page
+                    myfitnesspal_html = food_driver.page_source
+                    myfitnesspal_soup = BeautifulSoup(myfitnesspal_html, 'html.parser')
 
-                serving_size = elements = myfitnesspal_soup.find('p', {'class': 'MuiTypography-root MuiTypography-body1 css-1vrztnh'})
-                elements = myfitnesspal_soup.find_all('p', {'class': 'MuiTypography-root MuiTypography-body1 css-1vrztnh'})[1:5]
-                
-                lis = serving_size.text.split(",")
-
-                size = str(lis[-1])
-                
-                arr = []
-
-                arr.append('Serving Size:' + size)
-                for des in elements:
-                    arr.append(des.text)
+                    serving_size = elements = myfitnesspal_soup.find('p', {'class': 'MuiTypography-root MuiTypography-body1 css-1vrztnh'})
+                    elements = myfitnesspal_soup.find_all('p', {'class': 'MuiTypography-root MuiTypography-body1 css-1vrztnh'})[1:5]
                     
-                Nutrition_info[food_item] = arr
-            finally:
-                # Quit the browser at the end of each iteration
-                food_driver.quit()
+                    lis = serving_size.text.split(",")
+
+                    size = str(lis[-1])
+                    
+                    arr = []
+
+                    arr.append('Serving Size:' + size)
+                    for des in elements:
+                        arr.append(des.text)
+                    
+                    recurring[meal_type][food_item] = arr
+                    Nutrition_info[food_item] = arr
+                finally:
+                    # Quit the browser at the end of each iteration
+                    food_driver.quit()
     finally:
         # Close the browser
         driver.quit()
