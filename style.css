@@ -1,41 +1,184 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 20px;
-    background-color: #ecf9fb; /* Light background color */
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Light text color */
 }
 
-h1 {
+header {
     background-color: #333;
-    color: rgb(209, 111, 111);
-    text-align: center;
-    padding: 2em 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    color: #ffb1b1; /* Red color */
+    font-size: 28px; /* Adjust the font size as needed */
+    font-weight: bold; /* Bold text */
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 80px; /* Adjust the width of your logo as needed */
+    height: 80px; /* Ensure height matches width to maintain a perfect circle */
+    margin-right: 10px; /* Adjust the margin as needed */
+    border-radius: 50%; /* Make the logo circular */
+}
+
+.title span {
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 50px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold; /* Bold text */
+    transition: color 0.3s, font-size 0.3s; /* Add transition for color and font-size */
+}
+
+nav a:hover {
+    color: rgb(227, 3, 227); /* Change the text color on hover */
+    font-size: 22px; /* Change the font size on hover */
 }
 
 
 label {
     display: block;
     margin-bottom: 10px;
-    color: #555; /* Slightly darker text color */
+    color: #ddd; /* Lighter text color */
+}
+
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.custom-dropdown-2 {
+    position: relative;
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.selected-dining-hall {
+    cursor: pointer;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px; /* Adjust the border radius as needed */
+    text-align: center;
+    width: 200px;
+    height: 100px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.selected-dining-hall:hover {
+    background-color: #ae7d7d;
+    transform: scale(1.1);
+}
+
+
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    background-color: rgba(191, 123, 123, 0.9); /* Semi-transparent background */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 20px; /* Adjust padding as needed */
+    box-sizing: border-box;
+}
+
+.custom-dropdown.active .dropdown-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.custom-dropdown-2.active .dropdown-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.dining-hall-tile {
+    padding: 10px;
+    margin: 0;
+    border: 2px solid #ccc;
+    border-radius: 8px; /* Adjust the border radius as needed */
+    cursor: pointer;
+    width: 150px; /* Set the desired width */
+    height: 100px; /* Set the desired height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Center the text */
+    transition: background-color 0.3s, transform 0.3s;
+    margin-right: 10px; /* Adjust as needed for spacing between tiles */
+}
+
+
+.dining-hall-tile:hover {
+    background-color: #a35454;
+    transform: scale(1.1)
+}
+
+
+.custom-dropdown.active {
+    display: block; /* or visibility: visible; */
+}
+
+.custom-dropdown.show {
+    display: block; /* or visibility: visible; */
+}
+
+.custom-dropdown-2.active {
+    display: block; /* or visibility: visible; */
+}
+
+.custom-dropdown-2.show {
+    display: block; /* or visibility: visible; */
 }
 
 select {
-    width: 100%; /* Take full width */
+    width: 100%;
     padding: 12px;
-    margin-bottom: 15px; /* Add spacing between the dropdown and the next element */
-    border: 1px solid #ccc; /* Light border */
+    margin-bottom: 15px;
+    border: 1px solid #555; /* Darker border color */
     border-radius: 4px;
-    box-sizing: border-box; /* Include padding in width */
-    appearance: none; /* Remove default arrow in Firefox */
-    background-color: #fff; /* White background color */
-    color: #555; /* Text color */
+    box-sizing: border-box;
+    appearance: none;
+    background-color: #53565A; /* Darker background color */
+    color: #ddd; /* Lighter text color */
 }
 
-/* Style for when the dropdown is open */
 select:focus {
-    border-color: #4285f4; /* Highlight border color */
+    border-color: #4285f4;
 }
 
-/* Additional spacing after the select element */
+
 .text-element {
     margin-top: 15px;
 }
@@ -43,7 +186,7 @@ select:focus {
 #desiredCalories {
     width: 100px;
     padding: 8px;
-    border: 1px solid #ccc; /* Light border */
+    border: 1px solid #555; /* Darker border color */
     border-radius: 4px;
     margin-bottom: 10px;
 }
@@ -51,35 +194,38 @@ select:focus {
 #calorieGoalIndicator {
     margin-top: 10px;
     font-weight: bold;
+    color: #ddd; /* Lighter text color */
 }
 
 #calorieGoalStatus {
-    color: green; /* Default color when the goal is met */
+    color: rgb(0, 206, 0);
 }
-
 
 #plate {
     margin-top: 20px;
-    background-color: #faf0f6; /* White background color */
+    background-color: #53565A; /* Darker background color */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle box shadow */
 }
 
 #plateList li {
-    margin-bottom: 10px; /* Adjust the margin to your preference */
-    list-style: none; /* Remove list bullet */
+    margin-bottom: 10px;
+    list-style: none;
 }
 
 button {
     padding: 12px;
     background-color: #4285f4; /* Google Blue */
-    color: #fff; /* White text color */
+    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
     background-color: #2a4a99; /* Darker Google Blue on hover */
+    transform: scale(1.1); /* Grow in size on hover */
 }
+

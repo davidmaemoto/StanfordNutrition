@@ -7,31 +7,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Stanford Dining Meal Planner</h1>
-    
-    <label for="diningHallSelection">Select Dining Hall:</label>
-    <select id="diningHallSelection" onchange="populateMealSelection()">
-        <!-- Options will be dynamically added using JavaScript -->
-    </select>
+    <header>
+        <div class="title">
+            <img src="logo.png" alt="Logo" class="logo">
+            <span>Stanford Dining Meal Planner</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="https://rdeapps.stanford.edu/dininghallmenu/" target = "_blank">Official Menus</a></li>
+                <li><a href="https://davidmaemoto.netlify.app" target = "_blank">About the Creator</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2> Select Dining Hall: </h2>
+    <div class="custom-dropdown">
+        <div class="selected-dining-hall" id="selectedDiningHall">None</div>
+        <div class="dropdown-content" id="diningHallOptions">
+            <!-- Options will be dynamically added using JavaScript -->
+        </div>
+    </div>
 
-    <label for="mealType">Select Meal:</label>
-    <select id="mealType" onchange="populateFoodSelection()">
-        <!-- Options will be populated dynamically using JavaScript -->
-    </select>
+    <h2> Select Meal: </h2>
+    <div class="custom-dropdown-2">
+        <div class="selected-dining-hall" id="mealType">None</div>
+        <div class="dropdown-content" id="mealOptions">
+            <!-- Options will be populated dynamically using JavaScript -->
+        </div>
+    </div>
 
-    <label for="foodSelection">Select Food:</label>
-    <select id="foodSelection" onchange="addToPlate()">
-        <option value="" disabled selected>Select a food</option>
-        <!-- Options will be dynamically added using JavaScript -->
-    </select>
-
+    <h2> Select Dining Hall: </h2>
+        <label for="foodSelection">Select Food:</label>
+        <select id="foodSelection" onchange="addToPlate()">
+            <option value="" disabled selected>Select a food</option>
+            <!-- Options will be dynamically added using JavaScript -->
+        </select>
     
     <label for="desiredCalories">Meal Calorie Goal:</label>
     <input type="number" id="desiredCalories" min="0" value="750">
     <p id="calorieGoalIndicator">Calorie Goal: <span id="calorieGoalStatus"></span></p>
 
 
-    <!-- Great! Now I want to pivot to some styling! Let's add a virtual "plate" that acts like a pie chart. Based on the user's desired calories value which represents 100% of the pie-->
     <div id="plate">
         <h2>Your Plate</h2>
         <ul id="plateList"></ul>
@@ -41,8 +56,6 @@
         <p>Total Protein: <span id="totalProtein">0</span>g</p>
         <button onclick="clearPlate()">Clear Plate</button>
     </div>
-
-
 
     <script src="script.js"></script>
 </body>

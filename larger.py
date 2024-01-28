@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import urllib.parse
 import time
 import json
+import os
 from StanfordNutrition import getData
 
 def daily_food():
@@ -32,5 +33,8 @@ def daily_food():
 
 food_data = daily_food()
 
-with open('food_data.json', 'w') as json_file:
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, 'food_data.json')
+
+with open(file_path, 'w') as json_file:
     json.dump(food_data, json_file)
