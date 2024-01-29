@@ -295,8 +295,9 @@ button:hover {
         border: 2px solid #ccc;
         border-radius: 8px; /* Adjust the border radius as needed */
         cursor: pointer;
-        width: 85px; /* Set the desired width */
-        height: 55px; /* Set the desired height */
+        width: 50px; /* Set the desired width */
+        height: 35px; /* Set the desired height */
+        font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -304,7 +305,12 @@ button:hover {
         transition: background-color 0.3s, transform 0.3s;
         margin-right: 10px; /* Adjust as needed for spacing between tiles */
     }
-    
+
+    .dining-hall-tile img {
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+    }
     
     .dining-hall-tile:hover {
         background-color: #a35454;
