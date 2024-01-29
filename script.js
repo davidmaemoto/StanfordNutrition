@@ -78,11 +78,6 @@ async function populateDiningHallSelection() {
             icon.src = 'dining_hall.png';
             icon.alt = `${diningHall} icon`; // Provide an alt text for accessibility
 
-            // Set the icon size
-            icon.style.width = '30px'; // Adjust the width as needed
-            icon.style.height = '30px'; // Adjust the height as needed
-            icon.style.marginRight = '5px';
-
             // Create a <div> for the tile text
             const tileTextDiv = document.createElement('div');
             tileTextDiv.textContent = diningHall;
@@ -113,11 +108,6 @@ async function populateDiningHallSelection() {
         const quitIcon = document.createElement('img');
         quitIcon.src = 'quit.png';
         quitIcon.alt = 'Quit icon';
-
-        // Set the Quit icon size
-        quitIcon.style.width = '30px'; // Adjust the width as needed
-        quitIcon.style.height = '30px'; // Adjust the height as needed
-        quitIcon.style.marginRight = '5px';
 
         // Create a <div> for the tile text
         const quitTextDiv = document.createElement('div');
@@ -164,10 +154,6 @@ function updateSelectedDiningHall(selectedDiningHall) {
         icon.src = 'cur_hall.png'; // Replace with the path to your icon
         icon.alt = 'Icon'; // Provide an alt text for accessibility
 
-        // Set the icon size
-        icon.style.width = '30px'; // Adjust the width as needed
-        icon.style.height = '30px'; // Adjust the height as needed
-        icon.style.marginRight = '5px';
         selectedDiningHallElement.appendChild(icon);
 
 
@@ -216,9 +202,6 @@ function updateSelectedMeal(mealType) {
         icon.alt = 'Icon'; // Provide an alt text for accessibility
 
         // Set the icon size
-        icon.style.width = '30px'; // Adjust the width as needed
-        icon.style.height = '30px'; // Adjust the height as needed
-        icon.style.marginRight = '5px';
         selectedMealElement.appendChild(icon);
         }
 
@@ -271,10 +254,6 @@ async function populateMealSelection() {
             }
             icon.alt = `${mealType} icon`; // Provide an alt text for accessibility
 
-            // Set the icon size
-            icon.style.width = '30px'; // Adjust the width as needed
-            icon.style.height = '30px'; // Adjust the height as needed
-            icon.style.marginRight = '5px';
 
             // Create a <div> for the tile text
             const tileTextDiv = document.createElement('div');
@@ -307,10 +286,6 @@ async function populateMealSelection() {
         quitIcon.src = 'quit.png';
         quitIcon.alt = 'Quit icon';
 
-        // Set the Quit icon size
-        quitIcon.style.width = '30px'; // Adjust the width as needed
-        quitIcon.style.height = '30px'; // Adjust the height as needed
-        quitIcon.style.marginRight = '5px';
 
         // Create a <div> for the tile text
         const quitTextDiv = document.createElement('div');
@@ -390,10 +365,6 @@ async function populateFoodSelection() {
             icon.src = 'food.png';
             icon.alt = `${itemName} icon`; // Provide an alt text for accessibility
 
-            // Set the icon size
-            icon.style.width = '30px'; // Adjust the width as needed
-            icon.style.height = '30px'; // Adjust the height as needed
-            icon.style.marginRight = '5px';
 
             // Create a <div> for the tile text
             const tileTextDiv = document.createElement('div');
@@ -442,10 +413,6 @@ async function populateFoodSelection() {
         quitIcon.src = 'quit.png';
         quitIcon.alt = 'Quit icon';
 
-        // Set the Quit icon size
-        quitIcon.style.width = '30px'; // Adjust the width as needed
-        quitIcon.style.height = '30px'; // Adjust the height as needed
-        quitIcon.style.marginRight = '5px';
 
         // Create a <div> for the tile text
         const quitTextDiv = document.createElement('div');
