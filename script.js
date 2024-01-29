@@ -542,7 +542,7 @@ function addToPlate(dish) {
             const calorieGoal = parseInt(calorieGoalElement.value);
 
             calorieGoalStatusElement.textContent = totalCalories <= calorieGoal ? 'Goal Met' : 'Goal Not Met';
-            calorieGoalStatusElement.style.color = totalCalories <= calorieGoal ? 'green' : 'red';
+            calorieGoalStatusElement.style.color = totalCalories <= calorieGoal ? '#39ff40' : 'red';
 
             //percentage = parseInt(selectedFoodItem[selectedFoodName][1].split(' ')[1])/totalCalories
             
@@ -594,7 +594,7 @@ function updateGoalStatus() {
     const totalCalories = parseInt(totalCaloriesElement.textContent);
 
     calorieGoalStatusElement.textContent = totalCalories <= calorieGoal ? 'Goal Met' : 'Goal Not Met';
-    calorieGoalStatusElement.style.color = totalCalories <= calorieGoal ? 'green' : 'red';
+    calorieGoalStatusElement.style.color = totalCalories <= calorieGoal ? '#39ff40' : 'red';
 }
 
 function clearPlate() {
