@@ -74,6 +74,15 @@ nav a:hover {
     .section {
         width: 100%; /* Each section takes up 100% width when the screen is narrow */
     }
+    .dropdown-content {
+        width: 90%; /* Adjust the width for smaller screens */
+        height: 90%; /* Adjust the height for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+    .dining-hall-tile {
+        width: 50px;
+        height: 30px;
+    }
 }
 
 .custom-dropdown {
