@@ -297,7 +297,7 @@ button:hover {
         cursor: pointer;
         width: 50px; /* Set the desired width */
         height: 35px; /* Set the desired height */
-        font-size: 14px;
+        font-size: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -307,8 +307,8 @@ button:hover {
     }
 
     .dining-hall-tile img {
-        width: 10px;
-        height: 10px;
+        width: 6px;
+        height: 6px;
         margin-right: 5px;
     }
     
