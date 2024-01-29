@@ -58,23 +58,37 @@ nav a:hover {
 }
 
 
-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #ddd; /* Lighter text color */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* or 'space-around' or 'space-evenly' based on your preference */
+    margin: 20px 10%;
 }
 
+.section {
+    width: calc(33.33% - 20px); /* Adjust as needed */
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        width: 100%; /* Each section takes up 100% width when the screen is narrow */
+    }
+}
 
 .custom-dropdown {
     position: relative;
     display: inline-block;
-    margin-left: 25px;
 }
 
 .custom-dropdown-2 {
     position: relative;
     display: inline-block;
-    margin-left: 25px;
+}
+
+.custom-dropdown-3 {
+    position: relative;
+    display: inline-block;
 }
 
 .selected-dining-hall {
@@ -123,6 +137,12 @@ label {
     justify-content: space-around;
 }
 
+.custom-dropdown-3.active .dropdown-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .dining-hall-tile {
     padding: 10px;
     margin: 0;
@@ -145,6 +165,13 @@ label {
     transform: scale(1.1)
 }
 
+.dining-hall-tile.selected {
+    background-color: #4CAF50; /* Green background color for selected state */
+    transform: scale(1.1); /* Adjust the transformation for selected state */
+    border-color: #4CAF50; /* Green border color for selected state */
+    color: #fff; /* White text color for selected state */
+}
+
 
 .custom-dropdown.active {
     display: block; /* or visibility: visible; */
@@ -162,20 +189,46 @@ label {
     display: block; /* or visibility: visible; */
 }
 
-select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #555; /* Darker border color */
-    border-radius: 4px;
-    box-sizing: border-box;
-    appearance: none;
-    background-color: #53565A; /* Darker background color */
-    color: #ddd; /* Lighter text color */
+.custom-dropdown-3.active {
+    display: block; /* or visibility: visible; */
 }
 
-select:focus {
-    border-color: #4285f4;
+.custom-dropdown-3.show {
+    display: block; /* or visibility: visible; */
+}
+
+.custom-dropdown-3 .selected-dining-hall {
+    width: 130px; /* Adjust the width as needed */
+    height: 130px; /* Adjust the height as needed */
+    overflow: hidden; /* Ensure the image doesn't overflow */
+    border-radius: 50%; /* Optional: Make the container circular */
+}
+
+.custom-dropdown-3 .selected-dining-hall img {
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: Make the image circular if needed */
+}
+
+.calorie-goal-container {
+    width: 20%; /* Adjust as needed */
+    margin-bottom: 20px; /* Adjust spacing between sections */
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+input {
+    width: calc(100% - 20px); /* Adjust the width and padding as needed */
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 

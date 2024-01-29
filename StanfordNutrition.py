@@ -42,8 +42,20 @@ def getData(dining_hall, meal_type, recurring):
 
         label_name_elements = soup.find_all('span', {'class': 'clsLabel_Name'})
         stanford_food = [element.text for element in label_name_elements]
-        stanford_food.pop()
-        stanford_food.pop()
+        if 'Performance Bar' in stanford_food:
+            stanford_food.remove('Performance Bar')
+        if 'Assorted Allergy-Friendly Items' in stanford_food:
+            stanford_food.remove('Assorted Allergy-Friendly Items')
+        if "Chef's Choice Egg Special" in stanford_food:
+            stanford_food.remove("Chef's Choice Egg Special")
+        if "Chef's Choice Breakfast Special" in stanford_food:
+            stanford_food.remove("Chef's Choice Breakfast Special")
+        if "Chef's Choice Breakfast Special" in stanford_food:
+            stanford_food.remove("Chef's Choice Breakfast Special")
+        if "Chef's Choice Vegan Breakfast" in stanford_food:
+            stanford_food.remove("Chef's Choice Vegan Breakfast")
+        if "Chef's Choice Breakfast Special" in stanford_food:
+            stanford_food.remove("Chef's Choice Breakfast Special")
 
         for food_item in stanford_food:
             if food_item in recurring[meal_type].keys():

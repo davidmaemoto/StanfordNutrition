@@ -26,6 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }); 
 
+    const button3 = document.querySelector('#selectedFood'); // Update the selector as needed
+
+    button3.addEventListener('click', () => {
+        const dropdown3 = document.querySelector('.custom-dropdown-3'); // Use the correct class
+        dropdown3.classList.toggle('active');
+        if (dropdown3.classList.contains('active')) {
+            // Dropdown is now active, populate meal options
+            populateFoodSelection();
+        }
+    }); 
+
+    document.addEventListener('click', (event) => {
+        const dropdowns = document.querySelectorAll('.custom-dropdown, .custom-dropdown-2, .custom-dropdown-3');
+        
+        dropdowns.forEach((dropdown) => {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    });
+
 });
 
 function initializeSelectedDiningHall() {
@@ -111,7 +132,7 @@ async function populateDiningHallSelection() {
         quitTile.addEventListener('click', () => {
             // Handle quit tile click, you may want to trigger a function or update some state here
             console.log('Quit selected');
-            updateSelectedDiningHall('None');
+            updateSelectedDiningHall('Select . . . ');
             closeDropdown('diningHallOptions');
 
             const dropdown = document.querySelector('.custom-dropdown');
@@ -138,7 +159,7 @@ function updateSelectedDiningHall(selectedDiningHall) {
     }
     selectedDiningHallElement.innerHTML = '';
     // Create an <img> element for the icon
-    if (selectedDiningHall != 'None') {
+    if (selectedDiningHall != 'Select . . . ') {
         const icon = document.createElement('img');
         icon.src = 'cur_hall.png'; // Replace with the path to your icon
         icon.alt = 'Icon'; // Provide an alt text for accessibility
@@ -153,7 +174,7 @@ function updateSelectedDiningHall(selectedDiningHall) {
         //populateMealSelection();
     }
 
-    updateSelectedMeal('None');
+    updateSelectedMeal('Select . . . ');
     // Create a <div> for the text
     const textDiv = document.createElement('div');
     textDiv.textContent = selectedDiningHall;
@@ -181,16 +202,16 @@ function updateSelectedMeal(mealType) {
     selectedMealElement.innerHTML = '';
 
     // Create an <img> element for the icon
-    if (mealType !== 'None') {
+    if (mealType !== 'Select . . . ') {
         const icon = document.createElement('img');
         if (mealType == "Breakfast") {
-            icon.src = 'breakfast.png'
+            icon.src = 'breakfast.png';
         }
         else if (mealType == "Lunch") {
-            icon.src = 'lunch.png'
+            icon.src = 'lunch.png';
         }
         else if (mealType == "Dinner") {
-            icon.src = 'dinner.png'
+            icon.src = 'dinner.png';
         }
         icon.alt = 'Icon'; // Provide an alt text for accessibility
 
@@ -230,6 +251,7 @@ async function populateMealSelection() {
         // Clear previous options
         mealOptionsContainer.innerHTML = '';
         
+        
 
         // Populate meal options tiles
         for (const mealType in mealOptions) {
@@ -239,13 +261,13 @@ async function populateMealSelection() {
             // Create an <img> element for the icon
             const icon = document.createElement('img');
             if (mealType == "Breakfast") {
-                icon.src = 'breakfast.png'
+                icon.src = 'breakfast.png';
             }
             else if (mealType == "Lunch") {
-                icon.src = 'lunch.png'
+                icon.src = 'lunch.png';
             }
             else if (mealType == "Dinner") {
-                icon.src = 'dinner.png'
+                icon.src = 'dinner.png';
             }
             icon.alt = `${mealType} icon`; // Provide an alt text for accessibility
 
@@ -303,7 +325,7 @@ async function populateMealSelection() {
         quitTile.addEventListener('click', () => {
             // Handle quit tile click, you may want to trigger a function or update some state here
             console.log('Quit selected');
-            updateSelectedMeal('None');
+            updateSelectedMeal('Select . . . ');
             closeDropdown('mealOptionsContainer');
 
             const dropdown2 = document.querySelector('.custom-dropdown-2');
@@ -340,48 +362,146 @@ function closeDropdown(dropdownId) {
 }
 
 
-let foodData;
-
-
-
-
-
-
 
 // Function to populate food selection dropdown based on dining hall selection
 async function populateFoodSelection() {
     try {
-        clearPlate();
         updateGoalStatus();
-        const selectedDiningHall = diningHallSelection.value;
-        const selectedMealType = mealType.value;
+
+        const selectedDiningHall = document.getElementById('selectedDiningHall').textContent;
+        const selectedMealType = document.getElementById('mealType').textContent;
         const foodsInHall = foodData[selectedDiningHall][selectedMealType];
 
         const foodSelection = document.getElementById('foodSelection');
         console.log('Dropdown element:', foodSelection);
 
-        foodSelection.innerHTML = '<option value="" disabled selected>Select a food</option>';
+        // Clear previous options
+        foodSelection.innerHTML = '';
+        
+        const selectedFoods = [];
 
+        // Populate meal options tiles
         for (const itemName in foodsInHall) {
-            const option = document.createElement('option');
-            option.value = itemName;
-            option.text = itemName;
-            foodSelection.appendChild(option);
-        }
-        console.log('Number of foods:', Object.keys(foodData[selectedDiningHall][selectedMealType]).length);
+            const tile = document.createElement('div');
+            tile.classList.add('dining-hall-tile');
 
-        foodSelection.dispatchEvent(new Event('change'));
+            // Create an <img> element for the icon
+            const icon = document.createElement('img');
+            icon.src = 'food.png';
+            icon.alt = `${itemName} icon`; // Provide an alt text for accessibility
+
+            // Set the icon size
+            icon.style.width = '30px'; // Adjust the width as needed
+            icon.style.height = '30px'; // Adjust the height as needed
+            icon.style.marginRight = '5px';
+
+            // Create a <div> for the tile text
+            const tileTextDiv = document.createElement('div');
+            tileTextDiv.textContent = itemName;
+        
+            // Append the icon and tile text to the tile
+            tile.appendChild(icon);
+            tile.appendChild(tileTextDiv);
+
+            tile.addEventListener('click', () => {
+                // Handle tile click, you may want to trigger a function or update some state here
+                
+                const index = selectedFoods.indexOf(itemName);
+                if (index === -1) {
+                    // Not selected, add to the list
+                    selectedFoods.push(itemName);
+                    tile.classList.add('selected');
+                } 
+                else {
+                    // Already selected, remove from the list
+                    selectedFoods.splice(index, 1);
+                    tile.classList.remove('selected');
+                }
+            
+            console.log('Selected food:', selectedFoods);
+            updateSelectedItemsDisplay(selectedFoods);
+
+                //updateSelectedMeal(mealType);
+
+                //closeDropdown('foodSelection');
+                
+            
+                //const dropdown3 = document.querySelector('.custom-dropdown-3');
+                //dropdown3.classList.remove('active');
+            });
+
+            foodSelection.appendChild(tile);
+        }
+
+        // Add a "Quit" tile
+        const quitTile = document.createElement('div');
+        quitTile.classList.add('dining-hall-tile');
+
+        // Create an <img> element for the Quit icon
+        const quitIcon = document.createElement('img');
+        quitIcon.src = 'quit.png';
+        quitIcon.alt = 'Quit icon';
+
+        // Set the Quit icon size
+        quitIcon.style.width = '30px'; // Adjust the width as needed
+        quitIcon.style.height = '30px'; // Adjust the height as needed
+        quitIcon.style.marginRight = '5px';
+
+        // Create a <div> for the tile text
+        const quitTextDiv = document.createElement('div');
+        quitTextDiv.textContent = 'Add to Plate';
+
+
+
+        // Append the Quit icon and tile text to the tile
+        quitTile.appendChild(quitIcon);
+        quitTile.appendChild(quitTextDiv);
+
+        quitTile.addEventListener('click', () => {
+
+            for (const food of selectedFoods) {
+                addToPlate(food);
+            }
+            // Handle quit tile click, you may want to trigger a function or update some state here
+            console.log('Quit selected');
+            //updateSelectedMeal('None');
+            closeDropdown('foodSelection');
+
+            const dropdown3 = document.querySelector('.custom-dropdown-3');
+            dropdown3.classList.remove('active');
+        });
+
+        foodSelection.appendChild(quitTile);
+
+    
+        console.log('Number of meals:', Object.keys(mealOptions).length);
+    } catch (error) {
+        console.error('Error fetching or populating meal types:', error);
     }
-    catch (error) {
-        console.error('Error fetching or populating food selection:', error);
+
+}
+
+function updateSelectedItemsDisplay(selectedFoods) {
+    const selectedItemsDisplay = document.getElementById('selectedItemsDisplay');
+
+    // Clear previous display
+    selectedItemsDisplay.innerHTML = '';
+
+    // Display selected items and quantities
+    for (const itemName in selectedFoods) {
+        const itemDiv = document.createElement('div');
+        itemDiv.textContent = `${itemName}: ${selectedFoods[itemName]}`;
+
+        selectedItemsDisplay.appendChild(itemDiv);
     }
 }
 
+
 // Function to add selected food to the plate
-function addToPlate() {
-    const selectedDiningHall = diningHallSelection.value;
-    const selectedMealType = mealType.value;
-    const selectedFoodName = foodSelection.value;
+function addToPlate(dish) {
+    const selectedDiningHall = document.getElementById('selectedDiningHall').textContent;
+    const selectedMealType = document.getElementById('mealType').textContent;
+    const selectedFoodName = dish;
 
     if (selectedDiningHall && selectedMealType && selectedFoodName) {
         const plateList = document.getElementById('plateList');
@@ -434,10 +554,7 @@ function addToPlate() {
 
             const totalProtein = parseInt(totalProteinElement.textContent) + parseInt(selectedFoodItem[4].split(' ')[1]);
             totalProteinElement.textContent = totalProtein;
-
             
-            // Clear the food selection
-            foodSelection.value = '';
         }
     }
 }
