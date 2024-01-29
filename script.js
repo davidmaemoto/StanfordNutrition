@@ -154,6 +154,11 @@ function updateSelectedDiningHall(selectedDiningHall) {
         icon.src = 'cur_hall.png'; // Replace with the path to your icon
         icon.alt = 'Icon'; // Provide an alt text for accessibility
 
+        // Set the icon size
+        icon.style.width = '30px'; // Adjust the width as needed
+        icon.style.height = '30px'; // Adjust the height as needed
+        icon.style.marginRight = '5px';
+
         selectedDiningHallElement.appendChild(icon);
 
 
@@ -202,12 +207,18 @@ function updateSelectedMeal(mealType) {
         icon.alt = 'Icon'; // Provide an alt text for accessibility
 
         // Set the icon size
+        icon.style.width = '30px'; // Adjust the width as needed
+        icon.style.height = '30px'; // Adjust the height as needed
+        icon.style.marginRight = '5px';
+
         selectedMealElement.appendChild(icon);
         }
 
     // Create a <div> for the text
     const textDiv = document.createElement('div');
     textDiv.textContent = mealType;
+
+
     
     // Append the icon and text to the selected meal element
     selectedMealElement.appendChild(textDiv);
