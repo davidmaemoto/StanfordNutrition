@@ -70,20 +70,6 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 768px) {
-    .section {
-        width: 100%; /* Each section takes up 100% width when the screen is narrow */
-    }
-    .dropdown-content {
-        width: 90%; /* Adjust the width for smaller screens */
-        height: 90%; /* Adjust the height for smaller screens */
-        padding: 10px; /* Adjust padding for smaller screens */
-    }
-    .dining-hall-tile {
-        width: 50px;
-        height: 30px;
-    }
-}
 
 .custom-dropdown {
     position: relative;
@@ -289,5 +275,49 @@ button {
 button:hover {
     background-color: #2a4a99; /* Darker Google Blue on hover */
     transform: scale(1.1); /* Grow in size on hover */
+}
+
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 20px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+    .section {
+        width: 100%; /* Each section takes up 100% width when the screen is narrow */
+    }
+    .dining-hall-tile {
+        padding: 10px;
+        margin: 0;
+        border: 2px solid #ccc;
+        border-radius: 8px; /* Adjust the border radius as needed */
+        cursor: pointer;
+        width: 85px; /* Set the desired width */
+        height: 55px; /* Set the desired height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center; /* Center the text */
+        transition: background-color 0.3s, transform 0.3s;
+        margin-right: 10px; /* Adjust as needed for spacing between tiles */
+    }
+    
+    
+    .dining-hall-tile:hover {
+        background-color: #a35454;
+        transform: scale(1.1)
+    }
+    
+    .dining-hall-tile.selected {
+        background-color: #4CAF50; /* Green background color for selected state */
+        transform: scale(1.1); /* Adjust the transformation for selected state */
+        border-color: #4CAF50; /* Green border color for selected state */
+        color: #fff; /* White text color for selected state */
+    }
+
+
 }
 
