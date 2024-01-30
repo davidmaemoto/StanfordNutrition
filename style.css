@@ -297,11 +297,16 @@ button:hover {
     }
 
     nav li {
-        margin-right: 20px;
+        margin-right: 18px;
     }
 
     nav a {
         font-size: 12px;
+    }
+
+    nav a:hover {
+        color: rgb(227, 3, 227); /* Change the text color on hover */
+        font-size: 12px; /* Change the font size on hover */
     }
     .section {
         width: 100%; /* Each section takes up 100% width when the screen is narrow */
