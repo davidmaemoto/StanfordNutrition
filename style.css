@@ -286,7 +286,14 @@ button:hover {
 
 @media screen and (max-width: 768px) {
     .title {
-        font-size: 18px;
+        font-size: 20px;
+    }
+
+    .logo {
+        width: 50px; /* Adjust the width of your logo as needed */
+        height: 50px; /* Ensure height matches width to maintain a perfect circle */
+        margin-right: 5px; /* Adjust the margin as needed */
+        border-radius: 50%; /* Make the logo circular */
     }
 
     nav a {
