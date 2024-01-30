@@ -286,11 +286,11 @@ button:hover {
 
 @media screen and (max-width: 768px) {
     .title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     nav a {
-        font-size: 14px;
+        font-size: 12px;
     }
     .section {
         width: 100%; /* Each section takes up 100% width when the screen is narrow */
